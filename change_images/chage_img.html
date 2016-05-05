@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1>JavaScript Can Change Images</h1>
+
+<img id="myImage" onclick="changeImage()" src="bs1.jpg" width="500" height="180">
+
+<p>Click the Logo to change!</p>
+
+<script>
+function changeImage() {
+    var image = document.getElementById('myImage');
+    if (image.src.match("bs2")) {
+        image.src = "bs3.jpg";
+    } else if (image.src.match("bs1")){
+        image.src = "bs2.jpg";
+    }
+    else{
+        image.src = "bs1.jpg"
+    }
+}
+</script>
+
+</body>
+</html>
