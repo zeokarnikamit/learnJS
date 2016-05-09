@@ -7,12 +7,12 @@
     <script>
         var app = angular.module('myApp', []);
         app.controller('myCtrl', function($scope) {
-            $scope.tableHeaders = ['Name', 'Age', 'Gender']
+            $scope.tableHeaders = [{'name':'Name', 'age':'Age', 'gender':'Gender'}]
             $scope.details = []
             $scope.add = function(){
-                $scope.details.push({'name': $scope.name, 'age': $scope.age, 'gender': $scope.gender})
+                $scope.details.push({'name': $scope.name, 'age': $scope.age, 'gender': $scope.gender,
+                'slNo': $scope.count})
             };
-
         });
     </script>
 </head>
@@ -20,7 +20,7 @@
 <div data-ng-app="myApp" data-ng-controller="myCtrl">
 <p>
     Name: <input type="text" data-ng-model="name" required><br>
-    Age: <input type="text" data-ng-model="age" required><br>
+    Age: <input type="text" data-ng-model="age" data-ng-change="counter()" required><br>
     Gender: <input type="radio" data-ng-model="gender" value="male" checked> Male
     <input type="radio" data-ng-model="gender" value="female"> Female<br>
     <button data-ng-click="add()">Add</button>
@@ -28,9 +28,13 @@
 </p>
     <p>
     <table>
+    <thead>
         <tr data-ng-repeat="c in tableHeaders">
-            <td> {{ c }}</td>
+             <th> {{ c.name }} </th>
+             <th> {{ c.age }} </th>
+             <th> {{ c.gender }} </th>
         </tr>
+        </thead>
         <tr data-ng-repeat="x in details">
             <td> {{ x.name }}</td>
             <td> {{ x.age }}</td>
