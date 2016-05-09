@@ -21,14 +21,14 @@
 <body>
 <div data-ng-app="myApp" data-ng-controller="myCtrl">
 <p>
-    Name: <input type="text" data-ng-model="name" required><br>
-    Age: <input type="text" data-ng-model="age" data-ng-change="counter()" required><br>
+    Name: <input type="text" data-ng-model="name" placeHolder="Enter your Name" required><br>
+    Age: <input type="text" data-ng-model="age" placeHolder="Enter your Age" required><br>
     Gender: <input type="radio" data-ng-model="gender" value="male" checked> Male
-    <input type="radio" data-ng-model="gender" value="female"> Female<br>
+    <input type="radio" data-ng-model="gender" value="female"> Female
+    <input type="radio" data-ng-model="gender" value="NA">Don't wish to disclose<br>
     <button data-ng-click="add()">Add</button>
 
 </p>
-    <p>
     <table>
     <thead>
         <tr data-ng-repeat="c in tableHeaders">
@@ -47,7 +47,6 @@
             <td> <button data-ng-click="remove($index)">Remove</button></td>
         </tr>
     </table>
-    </p>
     </div>
 </body>
 </html>
