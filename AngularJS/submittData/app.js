@@ -1,0 +1,1 @@
+var app = augular.module('myApp', [])

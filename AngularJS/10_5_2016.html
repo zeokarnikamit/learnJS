@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
+	<script type="text/javascript">
+		var app = angular.module('myApp', [])
+		app.controller('myCtrl1', function($scope, $rootScope, $interval){
+				$rootScope.message = "Hello world!"
+				$scope.name = 'Parent'
+				$scope.greet = function(){
+					document.getElementById("say").innerHTML=$scope.message
+				};
+				$scope.count = 0
+				var counter = function(){
+					$scope.count ++
+				};
+				var intObj = $interval(counter, 1000, 5)
+				$scope.cancel = function(){
+					$interval.cancel(intObj)
+					$scope.count = "Canceled!"
+				};
+		});
+
+
+	</script>
+<body data-ng-app="myApp" >
+	<div data-ng-controller="myCtrl1">
+		{{name}} says {{ message }}<br />
+		Count: {{ count }}<br />
+		<button data-ng-click="cancel()">Cancel</button>
+</div>
+<script src="myCtrl2.js"></script>
+<div data-ng-controller="myCtrl2">
+	<select data-ng-model="sortOrder">
+		<option value="+name">Name (asc)</option>
+		<option value="-name">Name (desc)</option>
+		<option value="+phone">Phone (asc)</option>
+		<option value="-phone">Phone (desc)</option>
+	</select>
+	<ul data-ng-repeat="person in people | orderBy: sortOrder">
+		<li>{{person.name}} - {{person.phone}}</li>
+	</ul>
+	{{ name }} says {{ message }}<br />
+</div>
+
+
+</body>
+</head>
+</html>

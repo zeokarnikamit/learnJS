@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Info</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+<body>
+<script src="app.js"></script>
+<script src="controller.js"></script>
+
+<h1><b>Student Information</b></h1>
+    <div data-ng-app="myApp" data-ng-controller="controller">
+        <form data-ng-submit="add()">
+        <label for="name">Name:</label> <input id="name" data-ng-model="name"><br />
+        <label for="dob">DOB: </label><input id="dob" data-ng-model="dob"><br />
+        <label for="gender">Gender: </label>
+        <select data-ng-model="gender" id="gender">Gender
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select><br />
+        <label>Learned through:</label>
+        <input type="radio" value="Online" data-ng-model="studied"  checked>Online
+        <input type="radio" value="College" data-ng-model="studied" >College<br />
+        <input type="submit" value="Submit" />  <button data-ng-click="reset()">Reset</button>
+            </form>
+
+    </div>
+</body>
+</html>

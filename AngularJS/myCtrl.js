@@ -7,4 +7,3 @@ app.controller('myCtrl', function($scope) {
             $scope.remove = function(index){
                 $scope.details.splice(index, 1)
             };
-        });
