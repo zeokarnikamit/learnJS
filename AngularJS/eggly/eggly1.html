@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="Eggly">
+<head>
+    <meta charset="UTF-8">
+    <title>Eggly</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+<body>
+<script src="eggly-app.js"></script>
+<div data-ng-controller="MainController">
+
+    <h2><b>Movie Categories:</b></h2>
+    <button data-ng-click="setCurrentCategory(null)">All</button>
+    <ul data-ng-repeat="mcategory in movieCategories">
+
+        <li><button data-ng-click="setCurrentCategory(mcategory)">{{ mcategory.category | uppercase}}</button></li>
+
+    </ul>
+    <ul>
+    <li data-ng-show="{{ showValue }}" data-ng-repeat="movie in movies | filter: {category: currentCategory.category} | orderBy: '-raiting'">
+            <a href="{{movie.url}}">{{ movie.movie }} </a><p>Raiting {{movie.raiting}}</p>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
